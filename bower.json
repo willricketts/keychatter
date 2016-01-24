@@ -1,0 +1,34 @@
+{
+  "name": "keychatter",
+  "description": "Bitcoin chat platform",
+  "main": "main.js",
+  "authors": [
+    "@willricketts"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "btc",
+    "bitcoin",
+    "crypto",
+    "cryptocurrency",
+    "p2p",
+    "webrtc",
+    "rtc",
+    "chat",
+    "pgp",
+    "encryption"
+  ],
+  "homepage": "https://github.com/willricketts/keychatter",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "private": true,
+  "dependencies": {
+    "openpgp": "~1.5.0"
+  }
+}
