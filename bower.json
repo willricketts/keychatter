@@ -32,6 +32,8 @@
     "openpgp": "~1.5.0",
     "jquery": "~2.2.0",
     "kraken": "https://github.com/cferdinandi/kraken.git#~7.2.0",
-    "bitcore-lib": "~0.13.11"
+    "bitcore-lib": "~0.13.11",
+    "ember": "~2.3.0",
+    "ember-data": "~2.3.3"
   }
 }
