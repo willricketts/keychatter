@@ -8,7 +8,7 @@
   <body>
     <script type="text/x-handlebars">
       <div class="row">
-        <div class="grid-third float-right">
+        <div class="grid-third">
           <h2>Keychatter</h2>
         </div>
       </div>
@@ -23,9 +23,26 @@
       </div>
       <div class="row">
         <div class="grid-half float-center">
-          <button class="btn" id="setSelfBtcAddress">Next</button>
+          {{#link-to 'setTargetBtcAddress' tagName="button" class="btn"}}Next{{/link-to}}
         </div>
       </div>
+    </script>
+    
+    <script type="text/x-handlebars" id="setTargetBtcAddress">
+      <div class="row">
+        <div class="grid-half float-center">
+          <input type="text" id="targetBtcAddress" placeholder="Target BTC Address">
+        </div>
+      </div>
+      <div class="row">
+        <div class="grid-half float-center">
+          {{#link-to 'chat' tagName="button" class="btn"}}Connect{{/link-to}}
+        </div>
+      </div>
+    </script>
+    
+    <script type="text/x-handlebars" id="chat">
+      <h1>Chat, yo.</h1>
     </script>
     
     <script type="text/javascript">
