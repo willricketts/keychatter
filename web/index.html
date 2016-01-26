@@ -1,49 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="keychatter">
   <head>
     <meta charset="UTF-8">
     <title>Keychatter</title>
     <link rel="stylesheet" href="../bower_components/kraken/dist/css/main.css" type="text/css">
   </head>
-  <body>
-    <script type="text/x-handlebars">
-      <div class="row">
-        <div class="grid-third">
-          <h2>Keychatter</h2>
-        </div>
-      </div>
-      {{ outlet }}
-    </script>
+  <body ng-controller="ConnectionController as connection">
     
-    <script type="text/x-handlebars" id="setSelfBtcAddress">
-      <div class="row">
-        <div class="grid-half float-center">
-          <input type="text" id="selfBtcAddress" placeholder="Your BTC Address">
-        </div>
+    <div id="connectionSetup" ng-hide="connection.user.selfBtcAddress && connection.user.targetBtcAddress">
+      <div id="selfBtcAddressPane" ng-hide="connection.user.selfBtcAddress">
+        <h1>Self BTC Address</h1>
+        <form ng-submit="setSelfBtcAddress()">
+          <input type="text" ng-model="name" placeholder="Name">
+          <input type="email" ng-model="email" placeholder="Email">
+          <input type="password" ng-model="pass" placeholder="Password">
+          <input type="text" ng-model="selfBtcAddress" placeholder="Your BTC Address">
+          <input type="submit" class="btn" value="Next">
+        </form>
       </div>
-      <div class="row">
-        <div class="grid-half float-center">
-          {{#link-to 'setTargetBtcAddress' tagName="button" class="btn"}}Next{{/link-to}}
-        </div>
+      <div id="targetBtcAddressPane" ng-show="connection.user.selfBtcAddress">
+        <h1>Target BTC Address</h1>
+        <form ng-submit="setTargetBtcAddress()">
+          <input type="text" ng-model="targetBtcAddress" placeholder="Target BTC Address">
+          <input type="submit" class="btn" value="Connect">
+        </form>
       </div>
-    </script>
+    </div>
     
-    <script type="text/x-handlebars" id="setTargetBtcAddress">
-      <div class="row">
-        <div class="grid-half float-center">
-          <input type="text" id="targetBtcAddress" placeholder="Target BTC Address">
-        </div>
-      </div>
-      <div class="row">
-        <div class="grid-half float-center">
-          {{#link-to 'chat' tagName="button" class="btn"}}Connect{{/link-to}}
-        </div>
-      </div>
-    </script>
-    
-    <script type="text/x-handlebars" id="chat">
-      <h1>Chat, yo.</h1>
-    </script>
+    <div id="chatPane" ng-show="connection.user.pgpPubkey && connection.user.pgpPrivkey">
+      <h1>Chat Pane</h1>
+    </div>
     
     <script type="text/javascript">
       window.$ = window.jQuery = require("../bower_components/jquery/dist/jquery.js");
@@ -54,9 +40,7 @@
     <script src="../bower_components/bitcore-lib/bitcore-lib.min.js"></script>   
     <script src="../bower_components/kraken/dist/js/main.js"></script>
     <script src="../bower_components/kraken/dist/js/detects.js"></script>
-    <script src="../bower_components/ember/ember.debug.js"></script>
-    <script src="../bower_components/ember-data/ember-data.js"></script>
-    <script src="../bower_components/ember/ember-template-compiler.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
     <script src="./js/app.js"></script>
   </body>
 </html>
