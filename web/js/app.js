@@ -1,9 +1,9 @@
 (function() {
   var app = angular.module('keychatter', []);
-  
   app.controller('ConnectionController', ['$scope', '$q', function($scope, $q) {
 
     this.user = user;
+    
     $scope.setSelfBtcAddress = function() {
       user.name = $scope.name;
       user.email = $scope.email;
@@ -12,10 +12,13 @@
     }
     
     $scope.setTargetBtcAddress = function() {
+      $scope.loading = true;
       user.targetBtcAddress = $scope.targetBtcAddress;
       generateKeys(user).then(function(keys) {
         user.pgpPubkey = keys.publicKey;
         user.pgpPrivkey = keys.privateKey;
+        $scope.loading = false;
+        
       });
     }
     
@@ -37,8 +40,10 @@
         });
       });
     }
+    
   }]);
   
+    
   var user = {
     name: '',
     email: '',
@@ -48,4 +53,5 @@
     pgpPubkey: '',
     pgpPrivkey: ''
   };
+  
 })();
