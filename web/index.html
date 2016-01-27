@@ -29,9 +29,12 @@
     
     <div id="loadingPane" ng-show="loading">
       <h1>Loading</h1>
+      <h5 ng-show="peerIdSet">Received valid peer ID...</h5>
+      <h5 ng-show="keypairGenerated">PGP keypair generated...</h5>
+      <h5 ng-show="connectingToTarget">Connecting to target...</h5>
     </div>
     
-    <div id="chatPane" ng-show="connection.user.pgpPubkey && connection.user.pgpPrivkey">
+    <div id="chatPane" ng-show="keypairGenerated && connectedToTarget">
       <h1>Chat Pane</h1>
     </div>
     
