@@ -35,8 +35,11 @@
       $scope.connectedToTarget = true;
     }
     
+    // TODO: break this function out
     function generateKeys(user) {
       return $q(function(fulfill, reject) {
+
+	// TODO: replace inputs with random values for anonymity
         var opts = {
           numBits: 2048,
           userId: user.name + ' <' + user.email + '>',
@@ -54,6 +57,7 @@
       });
     }
     
+    // TODO: break this function out
     function setPeerId() {
       var x = new Peer(user.selfBtcAddress, {host: 'evening-waters-43284.herokuapp.com', port: 80, path: '/'});
       $scope.peerIdSet = true;
